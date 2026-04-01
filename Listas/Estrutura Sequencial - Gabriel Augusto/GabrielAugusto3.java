@@ -15,6 +15,6 @@ public class GabrielAugusto3{
       
       resultado = (N1 + N2) / N3;
       
-      System.out.printf("Resultado: %.2f\m", resultado);
+      System.out.printf("Resultado: %.2f\n", resultado);
    }
 }
