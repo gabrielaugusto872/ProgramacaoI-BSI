@@ -4,39 +4,44 @@ public class GabrielAugusto12 {
     public static void main(String[] args){
         Scanner teclado = new Scanner(System.in);
 
-        boolean teste = false;
-        int tamanho;
-        String dataVotacao, nascimento, voto;
+        int diaVoto, mesVoto, anoVoto, diaNascimento, mesNascimento, anoNascimento, idade;
 
-        System.out.printf("\nFormato necessário para entrada de datas:\n");
-        System.out.printf("DD/MM/AAAA\n");
+        System.out.printf("Digite a data de votação:\n");
+        System.out.printf("Dia: ");
+        diaVoto = teclado.nextInt();
+        System.out.printf("Mês: ");
+        mesVoto = teclado.nextInt();
+        System.out.printf("Ano: ");
+        anoVoto = teclado.nextInt();
 
-        while (!teste){
-            System.out.printf("\nDigite a data de votação: ");
-            dataVotacao = teclado.next();
+        System.out.printf("\nDigite a data de nascimento do eleitor:\n");
+        System.out.printf("Dia: ");
+        diaNascimento = teclado.nextInt();
+        System.out.printf("Mês: ");
+        mesNascimento = teclado.nextInt();
+        System.out.printf("Ano: ");
+        anoNascimento = teclado.nextInt();
 
-            tamanho = dataVotacao.length();
+        idade = anoVoto - anoNascimento;
 
-            if(tamanho < 10 || dataVotacao.charAt(2) != '/' || dataVotacao.charAt(5) != '/'){
-                System.out.printf("Formato da data inválido!\n");
-            } else {
-                teste = true;
+        if(mesVoto < mesNascimento){
+            idade = idade - 1;
+        } else {
+            if (mesVoto == mesNascimento){
+                if(diaVoto < diaNascimento){
+                    idade = idade - 1;
+                }
             }
         }
 
-        teste = false;
+        System.out.printf("Idade no dia da eleição: %d\n", idade);
 
-        while (!teste){
-            System.out.printf("\nDigite a data de nascimento do eleitor: ");
-            nascimento = teclado.next();
-
-            tamanho = nascimento.length();
-            
-            if(tamanho < 101 || nascimento.charAt(2) != '/' || nascimento.charAt(5) != '/'){
-                System.out.printf("Formato da data inválido!\n");
-            } else {
-                teste = true;
-            }
+        if(idade < 16){
+            System.out.printf("Não vota.\n");
+        } else if (idade < 19 || idade > 70){
+            System.out.printf("Voto Facultativo.\n");
+        } else {
+            System.out.printf("Voto Obrigatório.\n");
         }
 
         
